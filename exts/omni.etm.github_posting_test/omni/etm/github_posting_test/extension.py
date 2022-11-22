@@ -24,9 +24,8 @@ class MyExtension(omni.ext.IExt):
             with ui.VStack():
                 label = ui.Label("")
                 
-
                 def on_click():
-                    self._count += 1
+                    self._count += 2
                     label.text = f"count: {self._count}"
 
                 def on_reset():

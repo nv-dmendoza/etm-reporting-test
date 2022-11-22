@@ -7,26 +7,29 @@ import omni.kit.test
 import omni.kit.ui_test as ui_test
 
 # Import extension python module we are testing with absolute import path, as if we are external user (other extension)
-import omni.hello.world
-
+import omni.etm.github_posting_test
 
 # Having a test class dervived from omni.kit.test.AsyncTestCase declared on the root of module will make it auto-discoverable by omni.kit.test
 class Test(omni.kit.test.AsyncTestCase):
-    # Before running each test
     async def setUp(self):
+        """Runs Before each test"""
         pass
 
-    # After running each test
     async def tearDown(self):
+        """ Runs after each test"""
         pass
+    
+    def test_example_one(self):
+        """Example extension test one"""
+        self.assertEqual(True, False)
 
-    # Actual test, notice it is "async" function, so "await" can be used if needed
-    async def test_hello_public_function(self):
-        result = omni.hello.world.some_public_function(4)
-        self.assertEqual(result, 256)
+    def test_example_two(self):
+        """Example extension test one"""
+        self.assertEqual(1, 0)    
 
-
+    # use "async" for tests that require UI input
     async def test_window_button(self):
+        """Simulates clicking the add and reset buttons"""
 
         # Find a label in our window
         label = ui_test.find("My Window//Frame/**/Label[*]")
@@ -40,7 +43,8 @@ class Test(omni.kit.test.AsyncTestCase):
         self.assertEqual(label.widget.text, "empty")
 
         await add_button.click()
-        self.assertEqual(label.widget.text, "count: 1")
+        self.assertEqual(label.widget.text, "count: 2")
 
         await add_button.click()
-        self.assertEqual(label.widget.text, "count: 2")
+        self.assertEqual(label.widget.text, "count: 4")
+
