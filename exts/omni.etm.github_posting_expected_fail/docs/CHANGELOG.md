@@ -2,6 +2,9 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.3] - 2022-12-12
+- added missing changelog config entry
+
 ## [1.1.2] - 2022-12-05
 - publish test with fix registry copying
 
